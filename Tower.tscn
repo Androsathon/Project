@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sprites/Towers/icon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Tower.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Circle.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.4108, 31.5826 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 96.349
+
+[node name="Sprite" type="TextureRect"]
+margin_left = 278.931
+margin_top = 199.782
+margin_right = 278.931
+margin_bottom = 199.782
+rect_pivot_offset = Vector2( 10, 10 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 4
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 57.7396, 57.6308 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -57.5378, -58.1298 )
+shape = SubResource( 1 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2( 0.109772, -0.0654602 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Area2D2"]
+self_modulate = Color( 1, 1, 1, 0.0784314 )
+position = Vector2( -1.54047, -3.30095 )
+scale = Vector2( 0.678709, 0.678709 )
+texture = ExtResource( 3 )
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
